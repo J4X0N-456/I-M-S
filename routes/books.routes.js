@@ -1,18 +1,29 @@
-const express = require("express")
-const Bookmodel = require("../models/Book.model")
+const express = require("express");
+const Bookmodel = require("../models/Book.model");
 
-const router = express.Router()
+const {
+  idValidation,
+  createBookValidation,
+  updateBookValidation,
+  handleValidationErrors,
+} = require("../validators/book.validator");
 
+const router = express.Router();
 
+router.post(
+  "/",
+  createBookValidation,
+  handleValidationErrors,
 
-router.post("/", async (req, res) => {
-  try {
-    const NewBook = await BookModel.create(req.body);
-    res.status(201).json(NewBook);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+  async (req, res) => {
+    try {
+      const NewBook = await BookModel.create(req.body);
+      res.status(201).json(NewBook);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+);
 
 router.get("/", async (req, res) => {
   try {
@@ -23,52 +34,64 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
-try {
-const {id} = req.params;
-
-const book = await BookModel.findById(id);
-res.status(200).json(book);
-
-if (!Book) {
-  return res.status(404).json({ message: "Book not found" });
-}
-} 
-
-catch (error) {
-  res.status(400).json({ message: error.message });
-}
-
-})
-
-router.delete("/:id", async (req, res) => {
+router.get("/:id",
+idValidation, handleValidationErrors
+, async (req, res) => {
   try {
     const { id } = req.params;
- const deletedBook = await BookModel.findByIdAndDelete(id);
 
-if (!deletedBook) {
-  return res.status(404).json({ message: "Book not found" });
-}
+    const book = await BookModel.findById(id);
+    res.status(200).json(book);
 
-    res.status(200).json({ message: "Book deleted successfully",});
+    if (!Book) {
+      return res.status(404).json({ message: req.t("bookNotFound") });
+    }
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.delete("/:id", 
+idValidation, handleValidationErrors,
+  async (req, res) => {
   try {
     const { id } = req.params;
- const UpdatedBook = await BookModel.findByIdAndUpdate(id, req.body, { new: true });
+    const deletedBook = await BookModel.findByIdAndDelete(id);
 
-if (!UpdatedBook) {
-  return res.status(404).json({ message: "Book not found" });
-}
+    if (!deletedBook) {
+      return res.status(404).json({ message: req.t("bookNotFound") });
+    }
 
-    res.status(200).json({ message: "Book updated successfully", UpdatedBook });
+    res.status(200).json({ message: req.t("bookDeletedSuccessfully") });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
 
-module.exports = router
+router.put(
+  "/:id",
+  idValidation,
+  updateBookValidation,
+  handleValidationErrors,
+
+  async (req, res) => {
+    try {
+      const { id } = req.params;
+      const UpdatedBook = await BookModel.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+
+      if (!UpdatedBook) {
+        return res.status(404).json({ message: req.t("bookNotFound")});
+      }
+
+      res
+        .status(200)
+        .json({ message: req.t("bookUpdatedSuccessfully"), UpdatedBook });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  },
+);
+
+module.exports = router;

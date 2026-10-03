@@ -1,0 +1,14 @@
+{
+  "bookNotFound": "Ba a sami littafin ba",
+  "bookDeletedSuccessfully": "An goge littafin cikin nasara",
+  "bookUpdatedSuccessfully": "An sabunta littafin cikin nasara",
+  "bookNameRequired": "Ana buƙatar sunan littafin",
+  "bookNameLengthValidation": "Dole ne sunan littafin ya kasance tsakanin haruffa 5 zuwa 100",
+  "priceRequired": "Ana buƙatar farashi",
+  "priceRangeValidation": "Dole ne farashin ya kasance tsakanin 1 da 1000",
+  "stockCountRequired": "Ana buƙatar adadin kayan da ke cikin ajiya",
+  "stockCountRangeValidation": "Dole ne adadin kayan da ke cikin ajiya ya kasance tsakanin 1 da 255",
+  "imageRequired": "Ana buƙatar URL na hoton",
+  "imageUrlValidation": "Dole ne hoton ya kasance yana da ingantaccen URL",
+  "bookIdValidation": "Dole ne Book ID ya kasance ingantaccen MongoDB ObjectId"
+}

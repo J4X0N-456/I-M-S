@@ -1,0 +1,14 @@
+{
+  "bookNotFound": "Ahụghị akwụkwọ ahụ",
+  "bookDeletedSuccessfully": "Ehichapụla akwụkwọ ahụ nke ọma",
+  "bookUpdatedSuccessfully": "Emelitere akwụkwọ ahụ nke ọma",
+  "bookNameRequired": "A chọrọ aha akwụkwọ ahụ",
+  "bookNameLengthValidation": "Aha akwụkwọ ahụ ga-adị n'etiti mkpụrụedemede 5 na 100",
+  "priceRequired": "A chọrọ ọnụahịa",
+  "priceRangeValidation": "Ọnụahịa ga-adị n'etiti 1 na 1000",
+  "stockCountRequired": "A chọrọ ọnụọgụ ngwaahịa dị na nkwakọba",
+  "stockCountRangeValidation": "Ọnụọgụ ngwaahịa dị na nkwakọba ga-adị n'etiti 1 na 255",
+  "imageRequired": "A chọrọ URL onyonyo",
+  "imageUrlValidation": "URL onyonyo ahụ ga-abụrịrị nke ziri ezi",
+  "bookIdValidation": "Book ID ga-abụrịrị MongoDB ObjectId ziri ezi"
+}

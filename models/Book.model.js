@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const bookSchema = mongoose.Schema({
   bookName: {
@@ -16,14 +16,28 @@ const bookSchema = mongoose.Schema({
   price: {
     type: Number,
     required: [true, "Price is required"],
-    min : [1, "Price cannot be less than $1"],
-    max: [1000, "Price cannot be more than $1000"],
+    min: [1, "Price cannot be less than $1"],
+    max: [10000, "Price cannot be more than $10,000"],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  image: {
+    type: String,
+    default: "",
+    validate: {
+      validator: function (v) {
+        return /^https?:\/\/.+/.test(v);
+      },
+      message: "Image must be a valid URL",
+    },
   },
 });
 
 bookSchema.virtual("id").get(function () {
   return this._id.toHexString();
-})
+});
 
 bookSchema.set("toJSON", {
   virtuals: true,

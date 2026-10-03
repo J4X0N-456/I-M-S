@@ -1,0 +1,14 @@
+{
+  "bookNotFound": "A ko ri iwe naa",
+  "bookDeletedSuccessfully": "A ti pa iwe naa rẹ ni aṣeyọri",
+  "bookUpdatedSuccessfully": "A ti ṣe imudojuiwọn iwe naa ni aṣeyọri",
+  "bookNameRequired": "Orukọ iwe naa jẹ dandan",
+  "bookNameLengthValidation": "Orukọ iwe naa gbọdọ ni laarin awọn lẹta 5 ati 100",
+  "priceRequired": "Iye owo jẹ dandan",
+  "priceRangeValidation": "Iye owo gbọdọ wa laarin 1 ati 1000",
+  "stockCountRequired": "Iye ọja ti o wa ni iṣura jẹ dandan",
+  "stockCountRangeValidation": "Iye ọja ti o wa ni iṣura gbọdọ wa laarin 1 ati 255",
+  "imageRequired": "URL aworan jẹ dandan",
+  "imageUrlValidation": "Aworan gbọdọ ni URL to wulo",
+  "bookIdValidation": "Book ID gbọdọ jẹ MongoDB ObjectId to wulo"
+}
